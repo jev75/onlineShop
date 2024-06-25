@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ clothing_detail.name }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="product-detail row">
+            <div class="product-image col-md-6">
+                <div class="main-image">
+                    {% if clothing_detail.image %}
+                        <img src="{{ clothing_detail.image.url }}" alt="{{ clothing_detail.name }}"
+                             id="mainProductImage" data-default-src="{{ clothing_detail.image.url }}">
+                    {% else %}
+                        <img src="{% static 'image/placeholder.png' %}" alt="No image available" id="mainProductImage"
+                             data-default-src="{% static 'image/placeholder.png' %}">
+                    {% endif %}
+                </div>
+                <div class="thumbnail-images mt-3">
+                    {% for image in clothing_detail.images.all %}
+                        <img src="{{ image.image.url }}" alt="{{ clothing_detail.name }}" class="thumbnail"
+                             onclick="changeMainImage(this)">
+                    {% endfor %}
+                </div>
+                <p class="highlighted-price">Kaina: {{ clothing_detail.price }} €</p>
+            </div>
+            <div class="product-info col-md-6">
+                <h2 class="product-title">{{ clothing_detail.name }}</h2>
+            <br>
+                <p>Gamintojas: {{ clothing_detail.brand }}</p>
+                <h5>Aprašymas:</h5>
+                <div class="product-description">
+                    <p>{{ clothing_detail.description|safe }}</p>
+                </div>
+                {% if clothing_detail.is_on_sale %}
+                    <span class="badge bg-danger">Išpardavimas</span>
+                {% endif %}
+                <form action="{% url 'orders:add_to_cart' clothing_detail.pk %}" method="post" class="mt-3">
+                    {% csrf_token %}
+                    <input type="hidden" name="product_id" value="{{ clothing_detail.id }}">
+                    <input type="hidden" name="product_type" value="clothing">
+                    {% if clothing_detail.sizes.exists %}
+                        <div class="form-group">
+                            <label for="size">Pasirinkite dydį:</label>
+                            <select name="size" id="size" class="form-control custom-select-width">
+                                {% for size in clothing_detail.sizes.all %}
+                                    <option value="{{ size.id }}">{{ size.size }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <p class="mt-2">Likę: {{ clothing_detail.stock }} vnt.</p>
+                    {% endif %}
+                <br>
+                    <button type="submit" class="btn btn-secondary custom-btn mt-3">Įdėti į krepšelį »</button>
+                </form>
+                <a href="{% url 'store:clothing_list' %}" class="btn btn-primary mt-3">Atgal į sąrašą</a>
+            </div>
+        </div>
+        <div class="reviews-container mt-5">
+            <div class="reviews">
+                {% for review in reviews %}
+                    <div class="review mb-3">
+                        <p><strong>{{ review.user.username }}</strong> įvertino: {{ review.rating }} / 5</p>
+                        <p>{{ review.comment }}</p>
+                        <p><small>{{ review.created_at }}</small></p>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="review-form mt-4">
+                <form action="{% url 'store:clothing_detail' clothing_detail.pk %}" method="post">
+                    {% csrf_token %}
+                    {{ review_form.as_p }}
+                    <button type="submit" class="btn btn-primary mt-2">Pateikti atsiliepimą</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        function changeMainImage(thumbnail) {
+            var mainImage = document.getElementById('mainProductImage');
+            var tempSrc = mainImage.src;
+            mainImage.src = thumbnail.src;
+            thumbnail.src = tempSrc;
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,8 @@
+../.venv/
+venv/
+
+.idea/
+
+desktop.ini
+
+__pycache__/

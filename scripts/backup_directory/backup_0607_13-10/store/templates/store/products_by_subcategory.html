@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ subcategory.name }}{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <h2>{{ subcategory.name }}</h2>
+    <div class="product-grid">
+        {% for product in products %}
+            <div class="product">
+                <a href="{% if product.get_product_type == 'Clothing' %}{% url 'store:clothing_detail' product.pk %}{% elif product.get_product_type == 'Footwear' %}{% url 'store:footwear_detail' product.pk %}{% else %}{% url 'store:otherproduct_detail' product.pk %}{% endif %}">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    {% else %}
+                        <img src="{% static 'image/placeholder.png' %}" alt="No image available">
+                    {% endif %}
+                    <h6>{{ product.name }}</h6>
+                </a>
+                <p>{{ product.price }} €</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

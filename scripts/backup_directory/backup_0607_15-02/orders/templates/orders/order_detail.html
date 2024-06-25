@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}Užsakymo detalės{% endblock %}
+{% block content %}
+{% load static %}
+<div class="container">
+    <h2 class="text-center demo-warning" style="color: red;">DĖMESIO! tai DEMO internėtinės parduotuvės versija</h2>
+    <h3 class="text-center demo-warning" style="color: red;">su pilnai veikiančiu funkcianalumu</h3>
+    <h3 class="text-center demo-warning" style="color: red;">PREKIŲ PARDUOTUVĖJE NĖRA!</h3>
+
+    <hr>
+    <br>
+    <h2>Užsakymo detalės</h2>
+    <div class="order-details">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Prekė</th>
+                    <th>Kiekis</th>
+                    <th>Kaina</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in order.items.all %}
+                <tr>
+                    <td>
+                        <a href="{% if item.content_type.model == 'clothing' %}{% url 'store:clothing_detail' item.object_id %}{% elif item.content_type.model == 'footwear' %}{% url 'store:footwear_detail' item.object_id %}{% elif item.content_type.model == 'other' %}{% url 'store:otherproduct_detail' item.object_id %}{% endif %}">
+                            {{ item.product }}
+                        </a>
+                    </td>
+                    <td>x{{ item.quantity }}</td>
+                    <td>{{ item.price }} €</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p class="total-price font-weight-bold">Bendra suma: {{ order.get_total_cost }} €</p>
+    </div>
+    <hr>
+    <br>
+    <h3>Banko pavedimo instrukcijos</h3>
+    <p>Prašome atlikti mokėjimą šiais rekvizitais:</p>
+    <ul class="list-group mb-4">
+        <li class="list-group-item">Bankas: Swedbank</li>
+        <li class="list-group-item">Gavėjo pavadinimas: Jevgenijus Vasiljevas</li>
+        <li class="list-group-item">Sąskaitos numeris: LT02 7300 0100 2849 3382</li>
+        <li class="list-group-item">Mokėjimo paskirtis: Užsakymo Nr. {{ order.id }}</li>
+    </ul>
+    <hr>
+    <h3 class="text-center demo-warning" style="color: red;">PREKIŲ PARDUOTUVĖJE NĖRA!</h3>
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Užsakymo patvirtinimas{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="my-4 product-title">Užsakymo patvirtinimas</h2>
+    <form method="post" class="mb-4">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.full_name.label_tag }} {{ form.full_name }}
+        </div>
+        <div class="form-group">
+            {{ form.email.label_tag }} {{ form.email }}
+        </div>
+        <div class="form-group">
+            {{ form.phone.label_tag }} {{ form.phone }}
+        </div>
+        <div class="form-group">
+            {{ form.address.label_tag }} {{ form.address }}
+        </div>
+        <div class="form-group">
+            <label>Apmokėjimo būdas</label>
+            <div class="payment-options">
+                {% for choice in form.payment_method.field.choices %}
+                    <label class="payment-option">
+                        <input type="radio" name="payment_method" value="{{ choice.0 }}">
+                        <img src="{% static 'bank_logos/'|add:choice.0|add:'.png' %}" alt="{{ choice.1 }}">
+                        <div>
+                            <span>{{ choice.1 }}</span>
+                        </div>
+                    </label>
+                {% endfor %}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary custom-btn">Patvirtinti užsakymą</button>
+    </form>
+    <h3>Krepšelis</h3>
+    <div class="card">
+        <ul class="list-group list-group-flush">
+            {% for item in cart_items %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="my-0">{{ item.product.name }}</h5>
+                    <small class="text-muted">Kiekis: {{ item.quantity }}</small>
+                </div>
+                <span class="text-muted">€{{ item.product.price }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

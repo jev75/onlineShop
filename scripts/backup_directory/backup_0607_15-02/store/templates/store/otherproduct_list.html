@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Kitos prekės{% endblock %}
+{% block content %}
+<div class="container my-4">
+    <h2 class="mb-4 product-title">Kitos prekės</h2>
+    <div class="row">
+        {% for product in otherproduct_list %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <a href="{% url 'store:otherproduct_detail' product.pk %}">
+                    {% if product.image %}
+                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                    {% else %}
+                    <img src="{% static 'image/placeholder.png' %}" class="card-img-top" alt="No image available">
+                    {% endif %}
+                </a>
+                <div class="card-body">
+                    <a href="{% url 'store:otherproduct_detail' product.pk %}" class="text-decoration-none">
+                        <h6 class="card-title">{{ product.name }}</h6>
+                    </a>
+                    <p class="card-text">{{ product.price }} €</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

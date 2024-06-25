@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2 class="my-4 product-title">Mano užsakymai</h2>
+    <div class="list-group">
+        {% for order in orders %}
+        <a href="{% url 'orders:order_detail' order.id %}" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Užsakymas: Nr. {{ order.id }}</h5>
+                <small>{{ order.created_at }}</small>
+            </div>
+            <p class="mb-1">Bendra suma: {{ order.get_total_cost }} €</p>
+        </a>
+        {% empty %}
+        <div class="alert alert-info" role="alert">
+            Jūs neturite jokių užsakymų.
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

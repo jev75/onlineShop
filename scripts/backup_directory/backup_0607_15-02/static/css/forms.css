@@ -1,0 +1,110 @@
+.demo-warning {
+    color: red;
+}
+
+/* Stilius krepšelio puslapiui */
+.product-list {
+    display: flex; /* Naudojamas flexbox išdėstymas */
+    flex-wrap: wrap; /* Elementai gali pertraukti į naują eilutę */
+    gap: 20px; /* Tarpas tarp elementų */
+    justify-content: center; /* Centruoja elementus */
+    list-style: none; /* Pašalina sąrašo ženklelius */
+    padding: 0; /* Pašalina vidinį tarpą */
+}
+
+.product-item {
+    flex: 1 1 calc(33.333% - 20px); /* Elementas užima 1/3 tinklelio, atsižvelgiant į tarpus */
+    border: 1px solid #ccc; /* Rėmelis aplink elementą */
+    border-radius: 8px; /* Suapvalinti kampai */
+    overflow: hidden; /* Paslepia turinį, kuris viršija konteinerio ribas */
+    padding: 10px; /* Vidinis tarpas */
+    text-align: center; /* Centruoja tekstą viduje */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Šešėlis aplink elementą */
+}
+.product-item img {
+    max-width: 100%; /* Maksimalus plotis 100% konteinerio */
+    height: auto; /* Išlaiko originalias proporcijas */
+}
+
+.product-item h4 {
+    margin: 10px 0; /* Viršutinė ir apatinė tarpas */
+    font-size: 18px; /* Šrifto dydis */
+    color: #333; /* Teksto spalva */
+}
+
+.product-item p {
+    margin: 5px 0; /* Viršutinė ir apatinė tarpas */
+    font-size: 16px; /* Šrifto dydis */
+    color: #666; /* Teksto spalva */
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.continue-shopping {
+    display: inline-block; /* Keičia į inline-block */
+    margin-top: 20px; /* Viršutinis tarpas */
+    text-align: left; /* Teksto lygiavimas į kairę */
+    font-size: 18px; /* Šrifto dydis */
+    color: rgb(25, 25, 112); /* Teksto spalva */
+    text-decoration: none; /* Pašalina pabraukimą */
+    transition: color 0.3s; /* Pereinamoji animacija keičiasi spalvai */
+}
+
+.continue-shopping:hover {
+    color: #0056b3; /* Teksto spalva pasikeičia užvedus pelę */
+}
+
+.product-images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+
+/* Label elementų stilius */
+label {
+    display: block; /* Blokinis išdėstymas */
+    margin-bottom: 5px; /* Apatinis tarpas 5px */
+    font-weight: bold; /* Paryškintas tekstas */
+    color: #333; /* Teksto spalva */
+}
+
+/* Įvesties laukelių stilius */
+input {
+    width: 100%; /* Plotis 100% konteinerio */
+    padding: 10px; /* Vidinis tarpas 10px */
+    border: 1px solid #ccc; /* Riba aplink langelį */
+    border-radius: 5px; /* Užapvalinti kampai */
+}
+.card-img-top {
+    max-height: 300px;
+    object-fit: cover;
+}
+.card-title {
+    margin-top: 10px;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+/* Papildomi stiliai, kad pasirinkimo laukas atrodytų gražiau */
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+/* Custom width for select element */
+.custom-select-width {
+    max-width: 150px; /* Adjust the width as needed */
+}
+

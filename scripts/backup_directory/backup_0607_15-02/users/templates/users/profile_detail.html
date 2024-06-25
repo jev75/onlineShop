@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Profilio peržiūra{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="my-4 product-title">Profilio peržiūra</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{{ profile.avatar.url }}" class="card-img-top img-fluid rounded" alt="{{ profile }}">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ profile.user.username }}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="mb-3">Vartotojo informacija</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Slapyvardis:</strong> {{ profile.user.username }}</li>
+                        {% if profile.user.get_full_name %}
+                        <li class="list-group-item"><strong>Vardas ir pavardė:</strong> {{ profile.user.get_full_name }}</li>
+                        {% endif %}
+                        <li class="list-group-item"><strong>Paskutinį kartą prisijungęs:</strong> {{ profile.user.last_login|date:"Y-m-d H:i" }}</li>
+                    </ul>
+                    <div class="mt-4 d-flex justify-content-between">
+                        <a href="{% url 'users:profile_edit' %}" class="btn btn-primary">Redaguoti profilį</a>
+                        <a href="{% url 'users:password_change' %}" class="btn btn-secondary custom-btn">Keisti slaptažodį</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Profilio redagavimas{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h4 class="mb-3">Profilio redagavimas</h4>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    {{ user_form.username.label_tag }} {{ user_form.username }}
+                    {% if user_form.username.errors %}
+                        <div class="text-danger">
+                            {{ user_form.username.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="mb-3">
+                    {{ user_form.email.label_tag }} {{ user_form.email }}
+                    {% if user_form.email.errors %}
+                        <div class="text-danger">
+                            {{ user_form.email.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="mb-3">
+                    {{ user_form.first_name.label_tag }} {{ user_form.first_name }}
+                    {% if user_form.first_name.errors %}
+                        <div class="text-danger">
+                            {{ user_form.first_name.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="mb-3">
+                    {{ user_form.last_name.label_tag }} {{ user_form.last_name }}
+                    {% if user_form.last_name.errors %}
+                        <div class="text-danger">
+                            {{ user_form.last_name.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="mb-3">
+                    {{ form.avatar.label_tag }} {{ form.avatar }}
+                    {% if form.avatar.errors %}
+                        <div class="text-danger">
+                            {{ form.avatar.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                <button type="submit" class="btn btn-primary">Atnaujinti</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

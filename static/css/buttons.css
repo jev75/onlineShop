@@ -1,0 +1,71 @@
+/* buttons.css */
+
+/* Pagrindinio mygtuko stilius */
+.btn-primary {
+    background-color: rgba(0, 123, 255, 0.65); /* Mėlyna foninė spalva */
+    border: none; /* Nėra rėmelio */
+    padding: 10px 20px; /* Vidinis tarpas: 10px vertikaliai, 20px horizontaliai */
+    font-size: 16px; /* Šrifto dydis 16px */
+    border-radius: 5px; /* Užapvalinti kampai */
+    color: #fff; /* Baltas teksto spalva */
+    cursor: pointer; /* Pelės žymeklis keičiasi į rankos simbolį */
+    transition: background-color 0.3s ease; /* Pereinamoji animacija foninei spalvai */
+}
+
+/* Pagrindinio mygtuko hover efektas */
+.btn-primary:hover {
+    background-color: #0056b3; /* Tamsesnė mėlyna foninė spalva */
+}
+
+/* Individualaus mygtuko stilius */
+.custom-btn {
+    background-color: rgb(34, 139, 34, 0.8); /* Pakeiskite į norimą spalvą */
+    color: white; /* Baltas teksto spalva */
+    border: none; /* Nėra rėmelio */
+    padding: 10px 20px; /* Vidinis tarpas: 7px vertikaliai, 15px horizontaliai */
+    border-radius: 5px; /* Užapvalinti kampai */
+}
+
+/* Individualaus mygtuko hover efektas */
+.custom-btn:hover {
+    background-color: #7981d8; /* Tamsesnė žalia foninė spalva */
+}
+
+/* Pašalinimo mygtuko stilius */
+.remove-button {
+    display: inline-block; /* Išdėstymas eilutėje */
+    margin-top: 20px; /* Viršutinis tarpas 20px */
+    background-color: rgb(72, 61, 139); /* Fono spalva */
+    color: #fff; /* Baltas teksto spalva */
+    text-decoration: none; /* Nėra teksto pabraukimo */
+    padding: 5px 15px; /* Vidinis tarpas: 5px vertikaliai, 15px horizontaliai */
+    border-radius: 5px; /* Užapvalinti kampai */
+    transition: background-color 0.3s; /* Pereinamoji animacija foninei spalvai */
+}
+
+/* Pašalinimo mygtuko hover efektas */
+.remove-button:hover {
+    background-color: #c82333; /* Tamsesnė raudona foninė spalva */
+}
+
+/* Mygtukų stilius */
+#prevButton, #nextButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Mygtukų pozicijos nustatymas */
+#prevButton {
+    left: 0;
+}
+
+/* Mygtukų pozicijos nustatymas */
+#nextButton {
+    right: 0;
+}
+

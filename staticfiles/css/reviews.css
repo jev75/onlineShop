@@ -1,0 +1,95 @@
+/* reviews.css */
+.reviews-container {
+    margin-top: 120px;
+    background-color: #efefef; /* Šviesiai pilkas fonas */
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Lengvas šešėlis */
+    max-width: 800px; /* Maksimalus plotis */
+
+}
+
+.reviews {
+    background-color: rgba(211, 221, 221, 0.2);
+   /* padding: 10px;*/ /* Panaikinamas paddingas */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.review {
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    transition: box-shadow 0.3s; /* Sklandus šešėlio perėjimas */
+}
+
+.review:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Šešėlis užvedus pelę */
+}
+
+.review:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.review strong {
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.review .text-muted {
+    color: #6c757d;
+}
+
+.review .small {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+.review-form {
+    background-color: rgba(211, 221, 221, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.review-form h4 {
+    margin-bottom: 15px;
+}
+
+.review-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.review-form button {
+    align-self: flex-start;
+    margin-top: 10px;
+    background-color: #757eda;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.review-form button:hover {
+    background-color: #003884;
+}
+
+/* Highlighted section style */
+.highlight-section {
+    background-color: #e0f7fa; /* Šviesiai mėlynas fonas */
+    border-left: 5px solid #007bff; /* Mėlynas kairinis kraštas */
+    color: #007bff; /* Mėlynas tekstas */
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Lengvas šešėlis */
+}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Drabužiai
+{% endblock %}
+
+{% block content %}
+    <div class="container my-4">
+        <h2 class="mb-4 product-title">Drabužiai</h2>
+        <div class="product-grid">
+            {% for product in clothing_list %}
+                <div class="product">
+                    <a href="{% url 'store:clothing_detail' product.pk %}">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                        {% else %}
+                            <img src="{% static 'img/placeholder.png' %}" alt="No image available">
+                        {% endif %}
+                        <h6 class="product-name">{{ product.name }}</h6>
+                    </a>
+                    <p class="product-price">{{ product.price }} €</p>
+                    {% if product.is_on_sale %}
+                        <span class="badge bg-danger">Išpardavimas</span>
+                    {% endif %}
+                    <p class="product-stock">
+                        {% if product.is_available %}
+                            <span class="text-success">Prekė yra sandėlyje</span>
+                        {% else %}
+                            <span class="text-danger">Prekės nėra</span>
+                        {% endif %}
+                    </p>
+                    <div class="product-colors">
+                        {% for color in product.colors.all %}
+                            <span class="color-swatch" style="background-color: {{ color.name }};"></span>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

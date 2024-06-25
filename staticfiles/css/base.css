@@ -1,0 +1,184 @@
+/* base.css */
+
+/* Bendrieji puslapio nustatymai */
+body {
+    display: flex; /* Naudojamas flexbox išdėstymas */
+    flex-direction: column; /* Elementai išdėstomi stulpeliu */
+    min-height: 100vh; /* Minimalus aukštis 100% lango aukščio */
+    font-family: Arial, sans-serif;
+    margin: 0; /* Nustatomi kraštų dydžiai */
+    padding: 0; /* Nustatomi vidiniai tarpai */
+    background-color: #f4f4f4;
+}
+
+/* Antraštės nustatymai */
+header {
+    text-align: center; /* Teksto centravimas */
+    background-color: rgb(0, 128, 128);
+    color: white;
+    padding: 10px; /* Vidinis tarpas */
+}
+
+.header-container {
+    display: flex; /* Naudojamas lankstus išdėstymas */
+    justify-content: space-between; /* Erdvė tarp elementų */
+    align-items: center; /* Elementų lygiavimas centras */
+}
+
+/* Logotipo stilius */
+.logo img {
+    max-height: 60px !important; /* Nustato maksimalų logotipo aukštį */
+    width: auto; /* Išlaiko proporcijas */
+    opacity: 1; /* Peršviečiamumo efektas */
+    transition: opacity 0.3s ease; /* Sklandus perėjimas */
+}
+
+.logo img:hover {
+    opacity: 1; /* Pilnas matomumas paslinkus pelę */
+}
+
+header h1 a {
+    margin: 0; /* Krašto tarpas */
+    color: white; /* Nuorodos teksto spalva */
+    text-decoration: none; /* Nuorodos be pabraukimo */
+}
+
+header nav ul {
+    list-style-type: none; /* Be sąrašo ženklelių */
+    padding: 0; /* Nėra vidinio tarpo */
+    margin: 0; /* Nėra išorinio tarpo */
+    display: flex; /* Lankstus išdėstymas */
+    justify-content: center; /* Centruojamas turinys */
+}
+
+header nav ul li {
+    margin: 0 15px; /* Tarpai tarp elementų */
+}
+
+header nav ul li a {
+    color: white; /* Nuorodos teksto spalva */
+    text-decoration: none; /* Nuorodos be pabraukimo */
+}
+
+header nav ul li a:hover {
+    text-decoration: underline; /* Nuorodos pabraukimas paslinkus pelę */
+}
+
+main {
+    flex: 1 0 auto; /* Pagrindinis turinys išsiplečia likusioje vietoje */
+    padding: 20px; /* Vidinis tarpas */
+
+}
+
+aside {
+    flex: 0 0 200px !important; /* Fiksuotas plotis šoninei juostai */
+}
+
+section {
+    flex: 1 !important; /* Užima likusią vietą */
+}
+
+/* Stilius poraštei */
+footer {
+    flex-shrink: 0; /* Nesumažina poraštės, jei puslapis yra per mažas */
+    background-color: rgb(0, 128, 128); /* Fono spalva */
+    color: white; /* Teksto spalva */
+    padding: 10px 0; /* Vidinis tarpas */
+    text-align: center; /* Teksto centravimas */
+    position: relative; /* Fiksuotas pozicionavimas */
+    bottom: 0; /* Poraštė puslapio apačioje */
+    width: 100%; /* Užima visą plotį */
+}
+
+/* Puslapio apačios (footer) demo versijos tekstas */
+footer .demo-version {
+    position: absolute;
+    opacity: 0.1; /*  permatomumas */
+    font-size: 38px; /* Keisti šrifto dydį pagal poreikį */
+    margin-top: 10px; /* Tarpas virš teksto */
+    pointer-events: none; /* Užtikrinti, kad netrukdytų navigacijai */
+    z-index: 1; /* Užtikrinti, kad būtų virš kitų header elementų */
+    transform: translate(30%, -100%); /* Koreguoti poziciją, kad būtų centruota */
+}
+
+/* Puslapio viršaus (header) demo versijos tekstas */
+.demo-version-header {
+    position: absolute;
+    top: 50%; /* Centruoti vertikaliai */
+    left: 50%; /* Centruoti horizontaliai */
+    transform: translate(-50%, -50%); /* Koreguoti poziciją, kad būtų centruota */
+    opacity: 0.5; /* 50% permatomumas */
+    font-size: 24px; /* Keisti šrifto dydį pagal poreikį */
+    color: white; /* Keisti spalvą pagal poreikį */
+    pointer-events: none; /* Užtikrinti, kad netrukdytų navigacijai */
+    z-index: 1; /* Užtikrinti, kad būtų virš kitų header elementų */
+}
+
+/* Įspėjimo stiliai */
+.alert {
+    margin-top: 5px; /* Viršutinis tarpas 5px */
+}
+
+/* Profilio redagavimo formos stilius */
+.form-profile-edit {
+    max-width: 600px; /* Maksimalus plotis 600px */
+}
+
+/* Teksto spalva klaidoms */
+.text-danger {
+    color: #dc3545; /* Raudona spalva */
+}
+
+main.container-fluid {
+    flex: 1 0 auto; /* variantai: 1 0 auto, 1 1 auto */
+    padding: 2px; /* Remove default padding */
+}
+/* Šoninės juostos stilius */
+/* Sidebar stilius */
+.sidebar {
+    background-color: rgb(220, 220, 220, 0.5);
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    height: 100%; /* Ensure the sidebar takes full height */
+    margin-top: 20px; /* Space from the top */
+    width: 100%; /* Make sure the sidebar takes full width of its container */
+
+}
+
+.sidebar-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-links li {
+    margin-bottom: 10px;
+}
+
+.sidebar-links a {
+    color: rgb(16, 118, 252);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.sidebar-links a:hover {
+    color: #4b7425;
+}
+
+.sidebar-sub-links {
+    list-style: none;
+    padding-left: 25px;
+}
+
+.sidebar-sub-links li {
+    margin-bottom: 10px;
+}
+
+.sidebar-sub-links a {
+    color: #292e25;
+}
+
+.sidebar-sub-links a:hover {
+    color: #007bff;
+}

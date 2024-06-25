@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}{{ category_detail.name }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="category-detail">
+        <h1 class="mb-4">{{ category_detail.name }}</h1>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Kategorija: {{ category_detail.name }}</h4>
+                <p class="card-text"><strong>Aprašymas:</strong> {{ category_detail.description }}</p>
+                <a href="{% url 'store:category_list' %}" class="btn btn-primary mt-3">Atgal į sąrašą</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

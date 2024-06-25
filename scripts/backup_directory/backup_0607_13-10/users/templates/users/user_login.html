@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h4 class="mb-3">Prisijungimas</h4>
+            <form method="post" action="{% url 'users:login' %}">
+                {% csrf_token %}
+                <div class="mb-3">
+                    {{ form.username.label_tag }} {{ form.username }}
+                </div>
+                <div class="mb-3">
+                    {{ form.password.label_tag }} {{ form.password }}
+                </div>
+                <button type="submit" class="btn btn-primary">Prisijungti</button>
+            </form>
+            <p><a href="{% url 'users:password_reset' %}">Pamiršote slaptažodį?</a></p>
+            <p>Naujas vartotojas? <a href="{% url 'users:register' %}" class="btn btn-secondary">Registruotis</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
